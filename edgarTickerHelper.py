@@ -3,6 +3,16 @@ import json
 
 tmap = json.load(open('tickers_mapped.json', 'r'))
 
+def update_tickers():
+    # Get tickers from SEC
+    url = 'https://www.sec.gov/files/company_tickers.json'
+    r = requests.get(url)
+    tickers = r.json()
+
+    # Write to file
+    with open('tickers.json', 'w') as f:
+        json.dump(tickers, f, indent=4)
+
 def update():
     tickers = json.load(open('tickers.json', 'r'))
 
@@ -28,3 +38,7 @@ def ticker_mapper(ticker:str):
         return tmap[ticker]
     else:
         return None
+    
+if __name__ == "__main__":
+    update_tickers()
+    update()

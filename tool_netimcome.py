@@ -1,11 +1,11 @@
 import edgarRequestHelper as edgarRequestHelper
-import edgarTickerMapper as edgarTickerMapper
+import edgarTickerHelper as edgarTickerHelper
 
 
 TICKER = "NPK"
 
 # Get CIK
-CIK = edgarTickerMapper.ticker_mapper(TICKER)
+CIK = edgarTickerHelper.ticker_mapper(TICKER)
 
 netIncomeLoss = edgarRequestHelper.get_concepts(CIK, "NetIncomeLoss")
 
